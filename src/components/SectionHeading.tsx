@@ -1,0 +1,34 @@
+type SectionHeadingProps = {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  align?: "left" | "center";
+};
+
+export function SectionHeading({
+  eyebrow,
+  title,
+  description,
+  align = "left",
+}: SectionHeadingProps) {
+  const alignment =
+    align === "center"
+      ? "items-center text-center"
+      : "items-start text-left";
+
+  return (
+    <div className={`flex flex-col gap-3 ${alignment}`}>
+      <span className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-500">
+        {eyebrow}
+      </span>
+      <h2 className="text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl">
+        {title}
+      </h2>
+      {description ? (
+        <p className="max-w-2xl text-base text-slate-600 sm:text-lg">
+          {description}
+        </p>
+      ) : null}
+    </div>
+  );
+}
